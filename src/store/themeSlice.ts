@@ -1,4 +1,4 @@
- import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 type Theme = 'dark' | 'light';
 
@@ -7,10 +7,12 @@ interface ThemeState {
 }
 
 const initialState: ThemeState = {
-  theme: (localStorage.getItem('theme') as Theme) || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'),
+  theme:
+    (localStorage.getItem('theme') as Theme) ||
+    (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'),
 };
 
-const themeSlice = createSlice({
+const slice = createSlice({
   name: 'theme',
   initialState,
   reducers: {
@@ -25,5 +27,5 @@ const themeSlice = createSlice({
   },
 });
 
-export const { setTheme, toggleTheme } = themeSlice.actions;
-export default themeSlice.reducer;
+export const { setTheme, toggleTheme } = slice.actions;
+export const themeReducer = slice.reducer;

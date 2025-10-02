@@ -1,11 +1,14 @@
 import React from 'react';
-import Section from '../components/Section';
+import { Section } from '../components/Section';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 
-const About: React.FC = () => {
+export const About: React.FC = () => {
   const { t } = useTranslation();
   const skills = t<string[], any>('about.skills', { returnObjects: true });
+  const experience = t<string[], any>('about.experienceList', { returnObjects: true });
+  const education = t<string[], any>('about.educationList', { returnObjects: true });
+  const certificates = t<string[], any>('about.certificatesList', { returnObjects: true });
 
   return (
     <Section title={t('about.title')} subtitle={t('about.subtitle')}>
@@ -34,24 +37,37 @@ const About: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.4, delay: 0.05 }}
-          style={{
-            display:'grid',
-            placeItems:'center',
-            padding: 18,
-            background:
-              'linear-gradient(135deg, color-mix(in oklab, var(--primary), transparent 85%), color-mix(in oklab, var(--accent), transparent 85%))'
-          }}
+          style={{ padding: 18 }}
         >
-          <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: 80 }}>👋</div>
-            <p style={{ margin: '8px 0 0', color: 'var(--text-muted)' }}>
-              {t('hero.title', { name: 'Ваше Имя' })}
-            </p>
+          <h3 style={{ marginTop: 0 }}>{t('about.infoTitle')}</h3>
+          <div className="grid" style={{ gap: 16 }}>
+            <div className="card" style={{ padding: 14 }}>
+              <strong>{t('about.experience')}</strong>
+              <ul style={{ margin: '8px 0 0 16px' }}>
+                {experience.map((item) => (
+                  <li key={item} style={{ marginBottom: 6 }}>{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="card" style={{ padding: 14 }}>
+              <strong>{t('about.education')}</strong>
+              <ul style={{ margin: '8px 0 0 16px' }}>
+                {education.map((item) => (
+                  <li key={item} style={{ marginBottom: 6 }}>{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="card" style={{ padding: 14 }}>
+              <strong>{t('about.certificates')}</strong>
+              <ul style={{ margin: '8px 0 0 16px' }}>
+                {certificates.map((item) => (
+                  <li key={item} style={{ marginBottom: 6 }}>{item}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </motion.div>
       </div>
     </Section>
   );
 };
-
-export default About;

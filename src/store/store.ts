@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
-import themeReducer from './themeSlice';
-import localeReducer from './localeSlice';
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import { themeReducer } from './themeSlice';
+import { localeReducer } from './localeSlice';
+import { type TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 export const store = configureStore({
   reducer: {

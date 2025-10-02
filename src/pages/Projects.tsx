@@ -1,8 +1,8 @@
 import React from 'react';
-import Section from '../components/Section';
+import { Section } from '../components/Section';
 import { useTranslation } from 'react-i18next';
-import ProjectCard from '../components/ProjectCard';
-import { Project } from '../types';
+import { ProjectCard } from '../components/ProjectCard';
+import type { Project } from '../types';
 
 const demoProjects: Project[] = [
   {
@@ -49,7 +49,7 @@ const demoProjects: Project[] = [
   },
 ];
 
-const Projects: React.FC = () => {
+export const Projects: React.FC = () => {
   const { t } = useTranslation();
 
   return (
@@ -62,5 +62,3 @@ const Projects: React.FC = () => {
     </Section>
   );
 };
-
-export default Projects;

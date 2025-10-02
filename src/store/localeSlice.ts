@@ -10,7 +10,7 @@ const initialState: LocaleState = {
   locale: (localStorage.getItem('locale') as Locale) || 'ru',
 };
 
-const localeSlice = createSlice({
+const slice = createSlice({
   name: 'locale',
   initialState,
   reducers: {
@@ -25,5 +25,5 @@ const localeSlice = createSlice({
   },
 });
 
-export const { setLocale, toggleLocale } = localeSlice.actions;
-export default localeSlice.reducer;
+export const { setLocale, toggleLocale } = slice.actions;
+export const localeReducer = slice.reducer;

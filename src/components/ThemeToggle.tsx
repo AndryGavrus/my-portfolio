@@ -2,7 +2,7 @@ import React from 'react';
 import { useAppDispatch, useAppSelector } from '../store/store';
 import { toggleTheme } from '../store/themeSlice';
 
-const ThemeToggle: React.FC = () => {
+export const ThemeToggle: React.FC = () => {
   const dispatch = useAppDispatch();
   const theme = useAppSelector((s) => s.theme.theme);
 
@@ -17,5 +17,3 @@ const ThemeToggle: React.FC = () => {
     </button>
   );
 };
-
-export default ThemeToggle;

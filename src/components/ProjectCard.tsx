@@ -1,10 +1,9 @@
 import React from 'react';
-import { Project } from '../types';
+import type { Project } from '../types';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 
 const placeholder = (title: string) => {
-  // Программно генерируем простую SVG-картинку в виде data URL
   const svg = encodeURIComponent(`
     <svg xmlns="http://www.w3.org/2000/svg" width="800" height="500">
       <defs>
@@ -27,7 +26,7 @@ interface Props {
   project: Project;
 }
 
-const ProjectCard: React.FC<Props> = ({ project }) => {
+export const ProjectCard: React.FC<Props> = ({ project }) => {
   const { t } = useTranslation();
 
   return (
@@ -64,5 +63,3 @@ const ProjectCard: React.FC<Props> = ({ project }) => {
     </motion.article>
   );
 };
-
-export default ProjectCard;

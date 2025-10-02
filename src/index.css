@@ -40,6 +40,9 @@ body {
         var(--bg);
     color: var(--text);
     line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 a {
@@ -55,6 +58,12 @@ img {
 button {
     font: inherit;
     cursor: pointer;
+}
+
+.app-root {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
 .container {
@@ -140,6 +149,7 @@ button {
 
 .main {
     padding: 32px 0 64px;
+    flex: 1 0 auto;
 }
 
 .section {
@@ -290,6 +300,7 @@ button {
     border-top: 1px solid var(--border);
     padding: 24px 0 40px;
     color: var(--text-muted);
+    flex-shrink: 0;
 }
 
 .input,
@@ -346,4 +357,34 @@ hr.sep {
     height: 1px;
     background: var(--border);
     margin: 20px 0;
+}
+
+.icon-links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.icon-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--bg-soft);
+    color: var(--text);
+    transition: transform 0.12s ease, background 0.2s, border-color 0.2s;
+}
+
+.icon-btn:hover {
+    transform: translateY(-2px);
+    background: color-mix(in oklab, var(--bg-soft), var(--primary) 8%);
+    border-color: color-mix(in oklab, var(--border), var(--primary) 20%);
+}
+
+.icon {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
 }

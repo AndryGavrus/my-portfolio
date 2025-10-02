@@ -1,10 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import ThemeToggle from './ThemeToggle';
-import LanguageSwitcher from './LanguageSwitcher';
+import { ThemeToggle } from './ThemeToggle';
+import { LanguageSwitcher } from './LanguageSwitcher';
 import { useTranslation } from 'react-i18next';
 
-const Header: React.FC = () => {
+export const Header: React.FC = () => {
   const { t } = useTranslation();
 
   const linkClass = ({ isActive }: { isActive: boolean }) =>
@@ -13,7 +13,7 @@ const Header: React.FC = () => {
   return (
     <header className="header">
       <div className="container nav">
-        <div className="brand">
+        <div className="brand" aria-label="Portfolio brand">
           <span className="brand__dot" />
           <span>Portfolio</span>
         </div>
@@ -41,5 +41,3 @@ const Header: React.FC = () => {
     </header>
   );
 };
-
-export default Header;
