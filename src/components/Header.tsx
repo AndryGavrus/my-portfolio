@@ -1,19 +1,41 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { ThemeToggle } from './ThemeToggle';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { useTranslation } from 'react-i18next';
+import { AnimatePresence, motion } from 'framer-motion';
 
 export const Header: React.FC = () => {
   const { t } = useTranslation();
+  const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   const linkClass = ({ isActive }: { isActive: boolean }) =>
     `nav__link ${isActive ? 'active' : ''}`;
 
+  const go = (path: string) => {
+    navigate(path);
+    setOpen(false);
+  };
+
   return (
     <header className="header">
       <div className="container nav">
-        <div className="brand" aria-label="Portfolio brand">
+        <button
+          className={`burger ${open ? 'burger--open' : ''}`}
+          aria-label="Menu"
+          aria-expanded={open}
+          onClick={() => setOpen((v) => !v)}
+        >
+          <span className="burger__icon" />
+        </button>
+
+        <div
+          className="brand"
+          onClick={() => go('/')}
+          style={{ cursor: 'pointer' }}
+          aria-label="Logo"
+        >
           <span className="brand__dot" />
           <span>Portfolio</span>
         </div>
@@ -38,6 +60,47 @@ export const Header: React.FC = () => {
           <ThemeToggle />
         </div>
       </div>
+
+      <AnimatePresence>
+        {open && (
+          <motion.aside
+            className="mobile-menu"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <div className="mobile-menu__inner">
+              <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div className="brand" aria-hidden>
+                  <span className="brand__dot" />
+                  <span>Portfolio</span>
+                </div>
+                <button
+                  className={`burger burger--open`}
+                  aria-label="Close menu"
+                  onClick={() => setOpen(false)}
+                >
+                  <span className="burger__icon" />
+                </button>
+              </div>
+
+              <div className="mobile-menu__links">
+                <button className="mobile-menu__link" onClick={() => go('/')}>{t('nav.home')}</button>
+                <button className="mobile-menu__link" onClick={() => go('/about')}>{t('nav.about')}</button>
+                <button className="mobile-menu__link" onClick={() => go('/projects')}>{t('nav.projects')}</button>
+                <button className="mobile-menu__link" onClick={() => go('/contact')}>{t('nav.contact')}</button>
+              </div>
+
+              <div className="mobile-menu__footer">
+                <div className="container" style={{ display: 'flex', gap: 8 }}>
+                  <LanguageSwitcher />
+                  <ThemeToggle />
+                </div>
+              </div>
+            </div>
+          </motion.aside>
+        )}
+      </AnimatePresence>
     </header>
   );
 };

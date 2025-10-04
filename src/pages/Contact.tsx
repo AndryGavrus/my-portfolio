@@ -3,26 +3,8 @@ import { Section } from '../components/Section';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 
-const TelegramIcon = () => (
-  <svg className="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M9.04 15.89 8.9 19.1c.3 0 .43-.13.58-.28l1.39-1.34 2.88 2.12c.53.29.91.14 1.06-.49l1.92-9.02c.2-.92-.33-1.28-.9-1.06L4.9 11.07c-.88.34-.86.83-.15 1.05l3.6 1.12 8.36-5.28c.39-.24.75-.11.46.13L9.04 15.89z"/>
-  </svg>
-);
-
-const GmailIcon = () => (
-  <svg className="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M20 18c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V8.5l8 5.33 8-5.33V18zM20 6h-1l-7 4.67L5 6H4c-1.1 0-2 .9-2 2v.5l10 6.67 10-6.67V8c0-1.1-.9-2-2-2z"/>
-  </svg>
-);
-
-const LinkedInIcon = () => (
-  <svg className="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M6.94 8.5H4.5V19.5h2.44V8.5zM5.72 7.3c.78 0 1.41-.64 1.41-1.41 0-.78-.63-1.41-1.41-1.41S4.3 5.12 4.3 5.9c0 .77.63 1.4 1.42 1.4zM19.5 19.5V13.6c0-3.16-1.69-4.63-3.95-4.63-1.82 0-2.64 1-3.1 1.7V8.5H10v11h2.45v-5.4c0-1.43.27-2.82 2.05-2.82 1.75 0 1.78 1.64 1.78 2.9v5.33H19.5z"/>
-  </svg>
-);
-
 export const Contact: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [form, setForm] = useState({ name: '', email: '', message: '' });
@@ -44,6 +26,33 @@ export const Contact: React.FC = () => {
       setTimeout(() => setStatus('idle'), 2500);
     }
   };
+
+  const items = [
+    {
+      label: i18n.language === 'ru' ? 'Email' : 'Email',
+      value: 'you@example.com',
+      href: 'mailto:you@example.com',
+      icon: '✉️',
+    },
+    {
+      label: i18n.language === 'ru' ? 'GitHub' : 'GitHub',
+      value: '@yourhandle',
+      href: 'https://github.com/yourhandle',
+      icon: '🐙',
+    },
+    {
+      label: i18n.language === 'ru' ? 'LinkedIn' : 'LinkedIn',
+      value: 'your-name',
+      href: 'https://linkedin.com/in/your-name',
+      icon: '💼',
+    },
+    {
+      label: i18n.language === 'ru' ? 'Резюме' : 'Resume',
+      value: i18n.language === 'ru' ? 'Скачать PDF' : 'Download PDF',
+      href: '/resume.pdf',
+      icon: '📄',
+    },
+  ];
 
   return (
     <Section title={t('contact.title')} subtitle={t('contact.subtitle')}>
@@ -106,27 +115,78 @@ export const Contact: React.FC = () => {
           </div>
         </motion.form>
 
-        <motion.div
+        <motion.aside
           className="card"
-          style={{ padding: 18, display: 'grid', alignContent: 'center', gap: 12 }}
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.4, delay: 0.05 }}
+          style={{ padding: 18, display:'grid', gap: 14 }}
         >
-          <strong>{t('contact.orFindMe')}</strong>
-          <div className="icon-links">
-            <a className="icon-btn" href="https://t.me/yourhandle" target="_blank" rel="noreferrer" aria-label="Telegram">
-              <TelegramIcon /> @yourhandle
-            </a>
-            <a className="icon-btn" href="mailto:youremail@gmail.com" aria-label="Gmail">
-              <GmailIcon /> youremail@gmail.com
-            </a>
-            <a className="icon-btn" href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-              <LinkedInIcon /> LinkedIn
-            </a>
+          <div style={{ display:'grid', gap: 6 }}>
+            <h3 style={{ margin: 0 }}>
+              {i18n.language === 'ru' ? 'Связаться со мной' : 'Get in touch'}
+            </h3>
+            <p style={{ margin: 0, color:'var(--text-muted)' }}>
+              {i18n.language === 'ru'
+                ? 'Предпочитаю email, но открыт для сообщений в соцсетях.'
+                : 'Email is preferred, but I’m open to social DMs too.'}
+            </p>
           </div>
-        </motion.div>
+
+          <div style={{ display:'grid', gap: 10 }}>
+            {items.map((item) => {
+              const content = (
+                <div style={{ display:'flex', alignItems:'center', gap:12 }}>
+                  <div style={{ fontSize: 20 }}>{item.icon}</div>
+                  <div style={{ lineHeight: 1.2 }}>
+                    <div style={{ fontSize: 12, color:'var(--text-muted)' }}>{item.label}</div>
+                    <div style={{ fontWeight: 600 }}>{item.value}</div>
+                  </div>
+                </div>
+              );
+              return item.href ? (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target={item.href.startsWith('http') ? '_blank' : undefined}
+                  rel={item.href.startsWith('http') ? 'noreferrer' : undefined}
+                  className="contact-item"
+                  style={{
+                    border: '1px solid var(--border)',
+                    borderRadius: 12,
+                    padding: 12,
+                    background: 'var(--bg-soft)',
+                    transition: 'transform 0.12s ease, background 0.2s ease, border-color 0.2s ease',
+                    display:'block'
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(-2px)';
+                    (e.currentTarget as HTMLAnchorElement).style.background = 'color-mix(in oklab, var(--bg-soft), var(--primary) 6%)';
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLAnchorElement).style.transform = '';
+                    (e.currentTarget as HTMLAnchorElement).style.background = 'var(--bg-soft)';
+                  }}
+                >
+                  {content}
+                </a>
+              ) : (
+                <div
+                  key={item.label}
+                  style={{
+                    border: '1px solid var(--border)',
+                    borderRadius: 12,
+                    padding: 12,
+                    background: 'var(--bg-soft)'
+                  }}
+                >
+                  {content}
+                </div>
+              );
+            })}
+          </div>
+        </motion.aside>
       </div>
     </Section>
   );
