@@ -4,7 +4,8 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const photoDataUrl = (() => {
-  const svg = encodeURIComponent(`
+  const svg = encodeURIComponent(
+    `
     <svg xmlns="http://www.w3.org/2000/svg" width="800" height="800">
       <defs>
         <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
@@ -22,7 +23,8 @@ const photoDataUrl = (() => {
       </g>
       <circle cx="400" cy="400" r="300" fill="none" stroke="white" stroke-opacity="0.2" stroke-width="6"/>
     </svg>
-  `);
+  `
+);
   return `data:image/svg+xml;charset=utf-8,${svg}`;
 })();
 
@@ -37,7 +39,7 @@ export const Home: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
         >
-          <h1 className="hero__title">{t('hero.title', { name: 'Ваше Имя' })}</h1>
+          <h1 className="hero__title">{t('hero.title')}</h1>
           <p className="hero__desc">{t('hero.desc')}</p>
           <p style={{ marginTop: 0, marginBottom: 16, color: 'var(--text)' }}>
             <strong>{t('home.introHighlight')}</strong>
@@ -47,7 +49,7 @@ export const Home: React.FC = () => {
           </p>
           <div className="cta">
             <Link to="/projects" className="btn">{t('hero.ctaPrimary')}</Link>
-            <Link to="/contact" className="btn btn--ghost">{t('hero.ctaSecondary')}</Link>
+            <Link to="/contact" className="btn btn">{t('hero.ctaSecondary')}</Link>
           </div>
         </motion.div>
 

@@ -266,22 +266,22 @@ button {
 
 /* Main and scrolling control */
 .main {
-    padding: 32px 0 64px;
+    padding: 0 0 15px;
     flex: 1 0 auto;
 }
 
 /* Sections and layout */
 .section {
-    padding: 56px 0;
+    padding: 10px 0;
 }
 
 .section__title {
     font-size: clamp(24px, 2.6vw, 34px);
-    margin: 0 0 20px;
+    margin: 0 0 5px;
 }
 
 .section__subtitle {
-    margin: 0 0 28px;
+    margin: 0 0 10px;
     color: var(--text-muted);
 }
 
@@ -412,12 +412,13 @@ button {
 .project__title {
     margin: 0;
     font-weight: 700;
-    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.4);
+    color: rgb(245, 245, 245);
+    text-shadow: 0 2px 16px rgba(255, 255, 255, 0.3);
 }
 
 .footer {
     border-top: 1px solid var(--border);
-    padding: 24px 0 40px;
+    padding: 10px 0 5px;
     color: var(--text-muted);
         flex-shrink: 0;
 }

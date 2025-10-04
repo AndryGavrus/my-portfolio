@@ -37,7 +37,8 @@ export const Header: React.FC = () => {
           aria-label="Logo"
         >
           <span className="brand__dot" />
-          <span>Portfolio</span>
+          {/* <span>Portfolio</span> */}
+          <NavLink to="/" end>Andrey Gavrus</NavLink>
         </div>
 
         <nav className="nav__links" aria-label="Primary">

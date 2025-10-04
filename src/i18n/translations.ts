@@ -3,7 +3,7 @@ export const resources = {
     translation: {
       nav: { home: 'Home', about: 'About', projects: 'Projects', contact: 'Contact' },
       hero: {
-        title: "Hi, I'm {{name}}",
+        title: "Hi, I'm Andrey Gavrus",
         desc: "Frontend Developer crafting modern, accessible, and performant web apps.",
         ctaPrimary: "View Projects",
         ctaSecondary: "Contact Me"
@@ -12,7 +12,7 @@ export const resources = {
         photoAlt: "Portrait photo",
         introHighlight: "Building elegant UIs with robust engineering.",
         introBody: "I focus on design systems, DX, and smooth micro-interactions to create memorable products.",
-        photoCaption: "Based in Your City · Available for remote work"
+        photoCaption: "Based in Minsk · Available for remote work"
       },
       about: {
         title: "About Me",
@@ -67,7 +67,7 @@ export const resources = {
     translation: {
       nav: { home: 'Главная', about: 'О себе', projects: 'Проекты', contact: 'Контакты' },
       hero: {
-        title: "Привет, я {{name}}",
+        title: "Привет, я Андрей Гаврус",
         desc: "Frontend‑разработчик: создаю современные, доступные и быстрые веб‑приложения.",
         ctaPrimary: "Смотреть проекты",
         ctaSecondary: "Связаться"
@@ -76,7 +76,7 @@ export const resources = {
         photoAlt: "Портретное фото",
         introHighlight: "Создаю изящные интерфейсы на основе надежной инженерии.",
         introBody: "Фокус на дизайн‑системах, удобстве разработки и плавных микроанимациях для запоминающихся продуктов.",
-        photoCaption: "Город: Ваш город · Доступен к удаленной работе"
+        photoCaption: "Город: Минск · Доступен к удаленной работе"
       },
       about: {
         title: "О себе",
