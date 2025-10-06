@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { ThemeToggle } from './ThemeToggle';
 import { LanguageSwitcher } from './LanguageSwitcher';
@@ -18,12 +18,20 @@ export const Header: React.FC = () => {
     setOpen(false);
   };
 
+  // Сигнализируем Layout, чтобы размыть основной контент
+  useEffect(() => {
+    const rootMain = document.querySelector('main');
+    if (!rootMain) return;
+    if (open) rootMain.classList.add('main--blurred');
+    else rootMain.classList.remove('main--blurred');
+  }, [open]);
+
   return (
     <header className="header">
       <div className="container nav">
         <button
           className={`burger ${open ? 'burger--open' : ''}`}
-          aria-label="Menu"
+          aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
         >
@@ -37,7 +45,6 @@ export const Header: React.FC = () => {
           aria-label="Logo"
         >
           <span className="brand__dot" />
-          {/* <span>Portfolio</span> */}
           <NavLink to="/" end>Andrey Gavrus</NavLink>
         </div>
 
