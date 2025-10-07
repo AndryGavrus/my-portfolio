@@ -65,22 +65,11 @@ export const Header: React.FC = () => {
       <AnimatePresence>
         {open && (
           <motion.aside
-            className="mobile-menu"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
             <div className="mobile-menu__inner">
-              <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div className="brand" aria-hidden>
-                  <span className="brand__dot" />
-                  <span>Portfolio</span>
-                </div>
-                <button className="burger burger--open" aria-label="Close menu" onClick={() => setOpen(false)}>
-                  <span className="burger__icon" />
-                </button>
-              </div>
-
               <div className="mobile-menu__links">
                 <button className="mobile-menu__link" onClick={() => go('/')}>{t('nav.home')}</button>
                 <button className="mobile-menu__link" onClick={() => go('/about')}>{t('nav.about')}</button>

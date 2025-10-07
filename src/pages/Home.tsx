@@ -15,7 +15,8 @@ export const Home: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
         >
-          <h1 className="hero__title">{t('hero.title', { name: 'Ваше Имя' })}</h1>
+          <h1 className="hero__title">{t('hero.greeting')}</h1>
+          <h1 className="hero__title">{t('hero.title')}</h1>
           <p className="hero__desc">{t('hero.desc')}</p>
           <p style={{ marginTop: 0, marginBottom: 16, color: 'var(--text)' }}>
             <strong>{t('home.introHighlight')}</strong>

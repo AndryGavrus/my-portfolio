@@ -3,7 +3,8 @@ export const resources = {
     translation: {
       nav: { home: 'Home', about: 'About', projects: 'Projects', contact: 'Contact' },
       hero: {
-        title: "Hi, I'm Andrey Gavrus",
+        greeting: "Hi,",
+        title: "I'm Andrey Gavrus",
         desc: "Frontend Developer crafting modern, accessible, and performant web apps.",
         ctaPrimary: "View Projects",
         ctaSecondary: "Contact Me"
@@ -67,7 +68,8 @@ export const resources = {
     translation: {
       nav: { home: 'Главная', about: 'О себе', projects: 'Проекты', contact: 'Контакты' },
       hero: {
-        title: "Привет, я Андрей Гаврус",
+        greeting: "Привет,",
+        title: "я Андрей Гаврус",
         desc: "Frontend‑разработчик: создаю современные, доступные и быстрые веб‑приложения.",
         ctaPrimary: "Смотреть проекты",
         ctaSecondary: "Связаться"

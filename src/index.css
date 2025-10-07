@@ -1,7 +1,5 @@
 :root {
-    /* Однотонная палитра с акцентами */
     --bg: #0f172a;
-    /* темный однотонный фон */
     --bg-soft: #111827;
     --text: #e5e7eb;
     --text-muted: #9ca3af;
@@ -10,29 +8,18 @@
     --card: #111827;
     --border: #1f2937;
     --shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-    --glass: color-mix(in oklab, var(--bg), transparent 15%);
-
-    /* Фон-узор (tile) для бесшовности + градиент поверх */
-    --bg-gradient: radial-gradient(1400px 900px at 80% -10%, rgba(96, 165, 250, 0.08), transparent 60%),
-        radial-gradient(1200px 800px at -10% 20%, rgba(167, 139, 250, 0.09), transparent 60%);
-    --bg-pattern-color: rgba(255, 255, 255, 0.04);
 }
 
 :root[data-theme="light"] {
     --bg: #f8fafc;
-    /* такой же однотонный для светлой темы */
     --bg-soft: #ffffff;
     --text: #0f172a;
     --text-muted: #475569;
     --primary: #2563eb;
     --accent: #7c3aed;
     --card: #ffffff;
-    --border: #e6e8ee;
-    --shadow: 0 8px 28px rgba(2, 6, 23, 0.08);
-    --glass: color-mix(in oklab, var(--bg), transparent 8%);
-    --bg-gradient: radial-gradient(1400px 900px at 80% -10%, rgba(37, 99, 235, 0.08), transparent 60%),
-        radial-gradient(1200px 800px at -10% 20%, rgba(124, 58, 237, 0.08), transparent 60%);
-    --bg-pattern-color: rgba(2, 6, 23, 0.04);
+    --border: #e5e7eb;
+    --shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
 }
 
 * {
@@ -242,21 +229,12 @@ button {
 }
 
 /* Mobile menu overlay */
-.mobile-menu {
-    position: fixed;
-    inset: 0;
-    z-index: 55;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    background: color-mix(in oklab, var(--bg), #000 12%);
-    backdrop-filter: blur(8px);
-    padding: 12px 0 24px;
-}
-
 .mobile-menu__inner {
     display: grid;
     grid-template-rows: auto 1fr;
-    height: 100%;
+    height: 100vh;
+    background: color-mix(in oklab, var(--bg), #000 12%);
+    backdrop-filter: blur(8px);
 }
 
 .mobile-menu__links {
@@ -275,7 +253,6 @@ button {
 
 .mobile-menu__footer {
     padding: 10px 20px 0;
-    display: flex;
     gap: 8px;
 }
 
@@ -285,12 +262,6 @@ button {
     flex: 1 0 auto;
     transition: filter 0.2s ease;
     /* контент начинается сверху, но сетка обеспечивает симметрию */
-    overflow: hidden;
-    /* по умолчанию без скролла */
-}
-
-.main.scrollable {
-    overflow: auto;
 }
 
 /* Секции */
@@ -301,13 +272,11 @@ button {
 .section__title {
     font-size: clamp(24px, 2.6vw, 34px);
     margin: 0 0 18px;
-    text-align: center;
 }
 
 .section__subtitle {
     margin: 0 0 24px;
     color: var(--text-muted);
-    text-align: center;
 }
 
 /* Сетки */
@@ -352,7 +321,6 @@ button {
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
     gap: 24px;
-    align-items: center;
 }
 
 @media (max-width: 900px) {
@@ -364,7 +332,6 @@ button {
 .hero__title {
     font-size: clamp(28px, 4.5vw, 56px);
     margin: 0 0 10px;
-    text-align: left;
 }
 
 .hero__desc {
@@ -373,11 +340,6 @@ button {
 }
 
 @media (max-width: 900px) {
-
-    .hero__title,
-    .hero__desc {
-        text-align: center;
-    }
 
     .cta {
         justify-content: center;
@@ -410,7 +372,7 @@ button {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: top;
     display: block;
 }
 
@@ -483,6 +445,7 @@ button {
 .project__title {
     margin: 0;
     font-weight: 700;
+    color: rgba(255, 255, 255, 0.9);
     text-shadow: 0 2px 16px rgba(0, 0, 0, 0.4);
 }
 
