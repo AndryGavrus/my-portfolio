@@ -8,7 +8,7 @@ export const LanguageSwitcher: React.FC = () => {
 
   return (
     <button
-      className="lang-switcher"
+      className="btn btn--ghost"
       aria-label="Switch language"
       onClick={() => dispatch(toggleLocale())}
       title={`Lang: ${locale}`}

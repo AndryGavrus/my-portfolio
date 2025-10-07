@@ -8,7 +8,7 @@ export const ThemeToggle: React.FC = () => {
 
   return (
     <button
-      className="theme-toggle"
+      className="btn btn--ghost"
       aria-label="Toggle theme"
       onClick={() => dispatch(toggleTheme())}
       title={`Theme: ${theme}`}

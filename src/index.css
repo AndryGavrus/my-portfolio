@@ -1,15 +1,15 @@
 :root {
-    /* Нейтральная палитра + плавные градиенты для бесшовного фона */
-    --bg: #0e1220;
-    --bg-soft: #0f1526;
-    --bg-elev: #121a30;
-    --text: #e6e8ee;
-    --text-muted: #9aa3b2;
+    /* Однотонная палитра с акцентами */
+    --bg: #0f172a;
+    /* темный однотонный фон */
+    --bg-soft: #111827;
+    --text: #e5e7eb;
+    --text-muted: #9ca3af;
     --primary: #60a5fa;
     --accent: #a78bfa;
-    --card: #0f1526;
-    --border: #1c2742;
-    --shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+    --card: #111827;
+    --border: #1f2937;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
     --glass: color-mix(in oklab, var(--bg), transparent 15%);
 
     /* Фон-узор (tile) для бесшовности + градиент поверх */
@@ -19,11 +19,11 @@
 }
 
 :root[data-theme="light"] {
-    --bg: #f7f9fc;
+    --bg: #f8fafc;
+    /* такой же однотонный для светлой темы */
     --bg-soft: #ffffff;
-    --bg-elev: #ffffff;
-    --text: #0e1220;
-    --text-muted: #4b5563;
+    --text: #0f172a;
+    --text-muted: #475569;
     --primary: #2563eb;
     --accent: #7c3aed;
     --card: #ffffff;
@@ -50,29 +50,8 @@ body {
     font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Ubuntu, Cantarell, Noto Sans, Arial;
     color: var(--text);
     line-height: 1.6;
-    /* Бесшовный фон:
-     1) Подложка однотонная
-     2) Поверх — плиточный полупрозрачный паттерн
-     3) Сверху — мягкие большие градиенты
-  */
-    background:
-        /* градиентная дымка */
-        var(--bg-gradient),
-        /* плиточный узор */
-        repeating-linear-gradient(0deg,
-            transparent 0px,
-            transparent 22px,
-            var(--bg-pattern-color) 22px,
-            var(--bg-pattern-color) 23px),
-        repeating-linear-gradient(90deg,
-            transparent 0px,
-            transparent 22px,
-            var(--bg-pattern-color) 22px,
-            var(--bg-pattern-color) 23px),
-        var(--bg);
-    background-attachment: fixed;
-    /* на мобильных плавно и “единое полотно” */
-    background-size: auto, auto, auto, auto;
+    background: var(--bg);
+    /* однотонный фон */
 }
 
 a {
@@ -108,15 +87,16 @@ button {
 }
 
 .nav {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    /* симметрия: бренд слева, центр — нав, справа — тулбар/бургер */
     align-items: center;
-    justify-content: space-between;
     gap: 12px;
     padding: 12px 0;
 }
 
 .brand {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 10px;
     font-weight: 700;
@@ -133,6 +113,8 @@ button {
 
 .nav__links {
     display: flex;
+    justify-content: center;
+    /* центрируем нав ссылки для симметрии */
     gap: 10px;
     flex-wrap: wrap;
 }
@@ -149,7 +131,6 @@ button {
     transform: translateY(-1px);
 }
 
-/* Общий стиль “кнопок-переключателей” для языка/темы/бургера */
 .control {
     border: 1px solid var(--border);
     background: var(--bg-soft);
@@ -160,7 +141,7 @@ button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 6px;
 }
 
 .control:hover {
@@ -170,13 +151,18 @@ button {
 }
 
 .toolbar {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 8px;
+    justify-self: end;
 }
 
-/* Mobile: hide desktop nav and toolbar */
+/* Mobile: на маленьких — центр меню в оверлее, справа только бургер */
 @media (max-width: 820px) {
+    .nav {
+        grid-template-columns: auto 1fr auto;
+    }
+
     .nav__links {
         display: none;
     }
@@ -186,6 +172,7 @@ button {
     }
 }
 
+/* Burger в стиле control */
 .burger {
     border: 1px solid var(--border);
     background: var(--bg-soft);
@@ -198,6 +185,7 @@ button {
     justify-content: center;
     width: 40px;
     height: 40px;
+    justify-self: end;
 }
 
 .burger:hover {
@@ -253,7 +241,7 @@ button {
     transform: rotate(-45deg);
 }
 
-/* Mobile menu overlay + blur основного контента */
+/* Mobile menu overlay */
 .mobile-menu {
     position: fixed;
     inset: 0;
@@ -261,7 +249,7 @@ button {
     display: grid;
     grid-template-rows: auto 1fr auto;
     background: color-mix(in oklab, var(--bg), #000 12%);
-    backdrop-filter: blur(6px);
+    backdrop-filter: blur(8px);
     padding: 12px 0 24px;
 }
 
@@ -291,20 +279,21 @@ button {
     gap: 8px;
 }
 
-/* Main и контроль прокрутки — без изменений логики */
+/* Main: симметрия и корректная высота */
 .main {
     padding: 0 0 15px;
     flex: 1 0 auto;
     transition: filter 0.2s ease;
-}
-
-/* При открытом меню — размываем основной контент */
-.main--blurred {
-    filter: blur(4px) saturate(0.9);
-    pointer-events: none;
+    /* контент начинается сверху, но сетка обеспечивает симметрию */
     overflow: hidden;
+    /* по умолчанию без скролла */
 }
 
+.main.scrollable {
+    overflow: auto;
+}
+
+/* Секции */
 .section {
     padding: 52px 0;
 }
@@ -312,13 +301,16 @@ button {
 .section__title {
     font-size: clamp(24px, 2.6vw, 34px);
     margin: 0 0 18px;
+    text-align: center;
 }
 
 .section__subtitle {
     margin: 0 0 24px;
     color: var(--text-muted);
+    text-align: center;
 }
 
+/* Сетки */
 .grid {
     display: grid;
     gap: 20px;
@@ -346,6 +338,7 @@ button {
     }
 }
 
+/* Карточки */
 .card {
     background: var(--card);
     border: 1px solid var(--border);
@@ -354,7 +347,7 @@ button {
     overflow: hidden;
 }
 
-/* Hero image контейнер — для фото на главной */
+/* Герой: симметричная сетка + круглая фотография с подписью */
 .hero {
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
@@ -371,11 +364,24 @@ button {
 .hero__title {
     font-size: clamp(28px, 4.5vw, 56px);
     margin: 0 0 10px;
+    text-align: left;
 }
 
 .hero__desc {
     color: var(--text-muted);
     margin-bottom: 18px;
+}
+
+@media (max-width: 900px) {
+
+    .hero__title,
+    .hero__desc {
+        text-align: center;
+    }
+
+    .cta {
+        justify-content: center;
+    }
 }
 
 .cta {
@@ -384,25 +390,37 @@ button {
     flex-wrap: wrap;
 }
 
-.hero__image-wrap {
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    overflow: hidden;
-    background: var(--bg-elev);
-    aspect-ratio: 4 / 3;
-    /* держим пропорции */
+.hero__photo {
     display: grid;
+    justify-items: center;
+    gap: 10px;
 }
 
-.hero__image {
+.hero__avatar {
+    width: min(320px, 70vw);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--border);
+    background: var(--bg-soft);
+    box-shadow: var(--shadow);
+}
+
+.hero__avatar img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* безопасное масштабирование */
     object-position: center;
     display: block;
 }
 
+.hero__caption {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+/* Кнопки */
 .btn {
     padding: 10px 16px;
     border-radius: 12px;
@@ -421,6 +439,7 @@ button {
     background: var(--bg-soft);
 }
 
+/* Проекты */
 .project {
     position: relative;
     overflow: hidden;
@@ -432,7 +451,7 @@ button {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    background: linear-gradient(135deg, color-mix(in oklab, var(--primary), transparent 80%), color-mix(in oklab, var(--accent), transparent 80%));
+    background: var(--bg-soft);
 }
 
 .project__overlay {
@@ -464,16 +483,17 @@ button {
 .project__title {
     margin: 0;
     font-weight: 700;
-    color: rgb(245, 245, 245);
-    text-shadow: 0 2px 16px rgba(255, 255, 255, 0.3);
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.4);
 }
 
+/* Footer */
 .footer {
     border-top: 1px solid var(--border);
     padding: 22px 0 36px;
     color: var(--text-muted);
 }
 
+/* Формы */
 .input,
 .textarea {
     width: 100%;

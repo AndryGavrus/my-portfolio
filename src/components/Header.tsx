@@ -18,55 +18,48 @@ export const Header: React.FC = () => {
     setOpen(false);
   };
 
-  // Сигнализируем Layout, чтобы размыть основной контент
   useEffect(() => {
-    const rootMain = document.querySelector('main');
-    if (!rootMain) return;
-    if (open) rootMain.classList.add('main--blurred');
-    else rootMain.classList.remove('main--blurred');
+    if (open) {
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+    };
   }, [open]);
 
   return (
     <header className="header">
       <div className="container nav">
-        <button
-          className={`burger ${open ? 'burger--open' : ''}`}
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-        >
-          <span className="burger__icon" />
-        </button>
-
-        <div
-          className="brand"
-          onClick={() => go('/')}
-          style={{ cursor: 'pointer' }}
-          aria-label="Logo"
-        >
+        <div className="brand" onClick={() => go('/')} style={{ cursor: 'pointer' }} aria-label="Logo">
           <span className="brand__dot" />
           <NavLink to="/" end>Andrey Gavrus</NavLink>
         </div>
 
         <nav className="nav__links" aria-label="Primary">
-          <NavLink to="/" className={linkClass} end>
-            {t('nav.home')}
-          </NavLink>
-          <NavLink to="/about" className={linkClass}>
-            {t('nav.about')}
-          </NavLink>
-          <NavLink to="/projects" className={linkClass}>
-            {t('nav.projects')}
-          </NavLink>
-          <NavLink to="/contact" className={linkClass}>
-            {t('nav.contact')}
-          </NavLink>
+          <NavLink to="/" className={linkClass} end>{t('nav.home')}</NavLink>
+          <NavLink to="/about" className={linkClass}>{t('nav.about')}</NavLink>
+          <NavLink to="/projects" className={linkClass}>{t('nav.projects')}</NavLink>
+          <NavLink to="/contact" className={linkClass}>{t('nav.contact')}</NavLink>
         </nav>
 
         <div className="toolbar">
           <LanguageSwitcher />
           <ThemeToggle />
         </div>
+
+        <button
+          className={`burger ${open ? 'burger--open' : ''}`}
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-expanded={open}
+          onClick={() => setOpen(v => !v)}
+        >
+          <span className="burger__icon" />
+        </button>
       </div>
 
       <AnimatePresence>
@@ -83,11 +76,7 @@ export const Header: React.FC = () => {
                   <span className="brand__dot" />
                   <span>Portfolio</span>
                 </div>
-                <button
-                  className={`burger burger--open`}
-                  aria-label="Close menu"
-                  onClick={() => setOpen(false)}
-                >
+                <button className="burger burger--open" aria-label="Close menu" onClick={() => setOpen(false)}>
                   <span className="burger__icon" />
                 </button>
               </div>
