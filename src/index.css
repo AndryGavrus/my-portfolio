@@ -249,6 +249,7 @@ button {
     border-radius: 12px;
     border: 1px solid var(--border);
     background: var(--bg-soft);
+    color: var(--text);
 }
 
 .mobile-menu__footer {
