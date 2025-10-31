@@ -49,7 +49,7 @@ export const Contact: React.FC = () => {
     {
       label: i18n.language === 'ru' ? 'Резюме' : 'Resume',
       value: i18n.language === 'ru' ? 'Скачать PDF' : 'Download PDF',
-      href: '/resume.pdf',
+      href: '/.АНДРЕЙ ГАВРУС IT EN.pdf',
       icon: '📄',
     },
   ];

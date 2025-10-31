@@ -18,25 +18,27 @@ export const resources = {
       about: {
         title: "About Me",
         subtitle: "Experience & Skills",
-        body: "Over the last years I delivered production React apps, mentored teams, and designed component libraries.",
+        body1: "I am a Frontend-developer with experience in creating SPA applications on the React/TypeScript stack. ",
+        body2: "I have a deep understanding of modern approaches to development, management, and performance optimization.",
+        body3: "Thanks to my experience as a design engineer, I have developed strong analytical skills, systems thinking and the ability to work with complex requirements, which allows him to effectively solve non-trivial tasks and create reliable, scalable products.",
+        education: "Education",
+        educationList: [
+          "Belarusian National Technical University",
+          "Frontend Development Courses "
+        ],
         skillsTitle: "Key Skills",
-        skills: ["React", "TypeScript", "Redux Toolkit", "Node.js", "REST/GraphQL", "CI/CD", "Testing", "Accessibility"],
+        skills: ["React", "TypeScript", "Redux Toolkit", "Vite", "Webpack", "Tailwind", "Zod", "Git",  "Node.js", "RestAPI", "Testing", "Accessibility"],
         infoTitle: "Highlights",
         experience: "Experience",
         experienceList: [
-          "Senior Frontend Engineer — 3+ years with React/TS",
-          "Built analytics dashboards and design systems",
-          "Optimized performance and Core Web Vitals"
+          "Frontend Engineer — 3+ years with React/TS",
+          "Implemented effective application status management, which reduced the amount of boilerplate code by 30%",
+          "Provided 70+% coverage of the code with unit and component tests",
+          "Actively participated in the code review, task decomposition and maintenance of technical documentation"
         ],
-        education: "Education",
-        educationList: [
-          "BSc in Computer Science",
-          "Courses: Advanced React, System Design"
-        ],
-        certificates: "Certificates",
-        certificatesList: [
-          "AWS Cloud Practitioner",
-          "Scrum Master (PSM I)"
+        stack: "Methodologies and practices",
+        stackList: [
+          "Component approach", "FSD (Feature-Sliced Design)", "Code review", "CI/CD", "Adaptive layout", "Cross-browser compatibility"
         ]
       },
       projects: {
@@ -83,25 +85,32 @@ export const resources = {
       about: {
         title: "О себе",
         subtitle: "Опыт и навыки",
-        body: "За последние годы сделал продакшен‑проекты на React, менторил команды и проектировал библиотеки компонентов.",
+        // bodyList: [
+        //   "Frontend-разработчик с опытом в создании SPA-приложений на стеке React/TypeScript.",
+        //   "Обладаю глубоким пониманием современных подходов к разработке, управления состоянием и оптимизации производительности. ",
+        //   "Благодаря опыту инженера-проектировщика развил сильные аналитические навыки, системное мышление и умение работать со сложными требованиями, что позволяет эффективно решать нетривиальные задачи и создавать надежные, масштабируемые продукты.",
+        // ],
+        body1: "Frontend-разработчик с опытом в создании SPA-приложений на стеке React/TypeScript.",
+        body2: "Обладаю глубоким пониманием современных подходов к разработке, управления состоянием и оптимизации производительности. ",
+        body3: "Благодаря опыту инженера-проектировщика развил сильные аналитические навыки, системное мышление и умение работать со сложными требованиями, что позволяет эффективно решать нетривиальные задачи и создавать надежные, масштабируемые продукты.",
+        education: "Образование",
+        educationList: [
+          "Белорусский национальный технический университет",
+          "Курсы по Frontend-разработке"
+        ],
         skillsTitle: "Ключевые навыки",
-        skills: ["React", "TypeScript", "Redux Toolkit", "Node.js", "REST/GraphQL", "CI/CD", "Тестирование", "Доступность"],
+        skills: ["React", "TypeScript", "Redux Toolkit", "Vite", "Webpack", "Tailwind", "Zod", "Git",  "Node.js", "RestAPI", "Тестирование", "Доступность"],
         infoTitle: "Основные факты",
         experience: "Опыт",
         experienceList: [
-          "Senior Frontend Engineer — 3+ года с React/TS",
-          "Создавал аналитические дашборды и дизайн‑системы",
-          "Оптимизировал производительность и Core Web Vitals"
+          "Frontend Engineer — 3+ года с React/TS",
+          " Реализовал эффективное управление состоянием приложения, что сократило количество boilerplate-кода на 30%",
+          "Обеспечил покрытие кода unit- и компонентными тестами на 70+%",
+          "Активно участвовал в код-ревью, декомпозиции задач и ведении технической документации"
         ],
-        education: "Образование",
-        educationList: [
-          "Бакалавр компьютерных наук",
-          "Курсы: Advanced React, System Design"
-        ],
-        certificates: "Сертификаты",
-        certificatesList: [
-          "AWS Cloud Practitioner",
-          "Scrum Master (PSM I)"
+        stack: "Методологии и практики",
+        stackList: [
+          "Компонентный подход", "FSD (Feature-Sliced Design)", "Код-ревью", "CI/CD", "Адаптивная верстка", "Кросс-браузерная совместимость"
         ]
       },
       projects: {
