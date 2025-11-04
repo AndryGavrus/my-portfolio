@@ -1,141 +1,190 @@
 export const resources = {
-  en: {
-    translation: {
-      nav: { home: 'Home', about: 'About', projects: 'Projects', contact: 'Contact' },
-      hero: {
-        greeting: "Hi,",
-        title: "I'm Andrey Gavrus",
-        desc: "Frontend Developer crafting modern, accessible, and performant web apps.",
-        ctaPrimary: "View Projects",
-        ctaSecondary: "Contact Me"
-      },
-      home: {
-        photoAlt: "Portrait photo",
-        introHighlight: "Building elegant UIs with robust engineering.",
-        introBody: "I focus on design systems, DX, and smooth micro-interactions to create memorable products.",
-        photoCaption: "Based in Minsk · Available for remote work"
-      },
-      about: {
-        title: "About Me",
-        subtitle: "Experience & Skills",
-        body1: "I am a Frontend-developer with experience in creating SPA applications on the React/TypeScript stack. ",
-        body2: "I have a deep understanding of modern approaches to development, management, and performance optimization.",
-        body3: "Thanks to my experience as a design engineer, I have developed strong analytical skills, systems thinking and the ability to work with complex requirements, which allows him to effectively solve non-trivial tasks and create reliable, scalable products.",
-        education: "Education",
-        educationList: [
-          "Belarusian National Technical University",
-          "Frontend Development Courses "
-        ],
-        skillsTitle: "Key Skills",
-        skills: ["React", "TypeScript", "Redux Toolkit", "Vite", "Webpack", "Tailwind", "Zod", "Git",  "Node.js", "RestAPI", "Testing", "Accessibility"],
-        infoTitle: "Highlights",
-        experience: "Experience",
-        experienceList: [
-          "Frontend Engineer — 3+ years with React/TS",
-          "Implemented effective application status management, which reduced the amount of boilerplate code by 30%",
-          "Provided 70+% coverage of the code with unit and component tests",
-          "Actively participated in the code review, task decomposition and maintenance of technical documentation"
-        ],
-        stack: "Methodologies and practices",
-        stackList: [
-          "Component approach", "FSD (Feature-Sliced Design)", "Code review", "CI/CD", "Adaptive layout", "Cross-browser compatibility"
-        ]
-      },
-      projects: {
-        title: "Projects",
-        subtitle: "Some highlights from my work",
-        demo: "Live Demo",
-        code: "Source Code"
-      },
-      contact: {
-        title: "Contact",
-        subtitle: "Let’s build something great together",
-        name: "Your Name",
-        email: "Email",
-        message: "Message",
-        send: "Send",
-        success: "Thanks! Your message has been sent.",
-        error: "Oops, something went wrong.",
-        orFindMe: "Or find me here"
-      },
-      notfound: {
-        title: "404 — Page not found",
-        desc: "The page you are looking for doesn’t exist or has been moved.",
-        backHome: "Back to Home"
-      },
-      footer: { rights: "All rights reserved." }
-    }
-  },
-  ru: {
-    translation: {
-      nav: { home: 'Главная', about: 'О себе', projects: 'Проекты', contact: 'Контакты' },
-      hero: {
-        greeting: "Привет,",
-        title: "я Андрей Гаврус",
-        desc: "Frontend‑разработчик: создаю современные, доступные и быстрые веб‑приложения.",
-        ctaPrimary: "Смотреть проекты",
-        ctaSecondary: "Связаться"
-      },
-      home: {
-        photoAlt: "Портретное фото",
-        introHighlight: "Создаю изящные интерфейсы на основе надежной инженерии.",
-        introBody: "Фокус на дизайн‑системах, удобстве разработки и плавных микроанимациях для запоминающихся продуктов.",
-        photoCaption: "Город: Минск · Доступен к удаленной работе"
-      },
-      about: {
-        title: "О себе",
-        subtitle: "Опыт и навыки",
-        // bodyList: [
-        //   "Frontend-разработчик с опытом в создании SPA-приложений на стеке React/TypeScript.",
-        //   "Обладаю глубоким пониманием современных подходов к разработке, управления состоянием и оптимизации производительности. ",
-        //   "Благодаря опыту инженера-проектировщика развил сильные аналитические навыки, системное мышление и умение работать со сложными требованиями, что позволяет эффективно решать нетривиальные задачи и создавать надежные, масштабируемые продукты.",
-        // ],
-        body1: "Frontend-разработчик с опытом в создании SPA-приложений на стеке React/TypeScript.",
-        body2: "Обладаю глубоким пониманием современных подходов к разработке, управления состоянием и оптимизации производительности. ",
-        body3: "Благодаря опыту инженера-проектировщика развил сильные аналитические навыки, системное мышление и умение работать со сложными требованиями, что позволяет эффективно решать нетривиальные задачи и создавать надежные, масштабируемые продукты.",
-        education: "Образование",
-        educationList: [
-          "Белорусский национальный технический университет",
-          "Курсы по Frontend-разработке"
-        ],
-        skillsTitle: "Ключевые навыки",
-        skills: ["React", "TypeScript", "Redux Toolkit", "Vite", "Webpack", "Tailwind", "Zod", "Git",  "Node.js", "RestAPI", "Тестирование", "Доступность"],
-        infoTitle: "Основные факты",
-        experience: "Опыт",
-        experienceList: [
-          "Frontend Engineer — 3+ года с React/TS",
-          " Реализовал эффективное управление состоянием приложения, что сократило количество boilerplate-кода на 30%",
-          "Обеспечил покрытие кода unit- и компонентными тестами на 70+%",
-          "Активно участвовал в код-ревью, декомпозиции задач и ведении технической документации"
-        ],
-        stack: "Методологии и практики",
-        stackList: [
-          "Компонентный подход", "FSD (Feature-Sliced Design)", "Код-ревью", "CI/CD", "Адаптивная верстка", "Кросс-браузерная совместимость"
-        ]
-      },
-      projects: {
-        title: "Проекты",
-        subtitle: "Некоторые из моих работ",
-        demo: "Демо",
-        code: "Код"
-      },
-      contact: {
-        title: "Контакты",
-        subtitle: "Давайте сделаем что‑то классное вместе",
-        name: "Ваше имя",
-        email: "Email",
-        message: "Сообщение",
-        send: "Отправить",
-        success: "Спасибо! Ваше сообщение отправлено.",
-        error: "Упс, что‑то пошло не так.",
-        orFindMe: "Или найдите меня здесь"
-      },
-      notfound: {
-        title: "404 — Страница не найдена",
-        desc: "Похоже, такой страницы не существует или её переместили.",
-        backHome: "На главную"
-      },
-      footer: { rights: "Все права защищены." }
-    }
-  }
+    en: {
+        translation: {
+            nav: {
+                home: 'Home',
+                about: 'About',
+                projects: 'Projects',
+                contact: 'Contact',
+            },
+            hero: {
+                greeting: 'Hi,',
+                title: "I'm Andrey Gavrus",
+                desc: 'Frontend Developer crafting modern, accessible, and performant web apps.',
+                ctaPrimary: 'View Projects',
+                ctaSecondary: 'Contact Me',
+            },
+            home: {
+                photoAlt: 'Portrait photo',
+                introHighlight: 'Building elegant UIs with robust engineering.',
+                introBody:
+                    'I focus on design systems, DX, and smooth micro-interactions to create memorable products.',
+                photoCaption: 'Based in Minsk · Available for remote work',
+            },
+            about: {
+                title: 'About Me',
+                subtitle: 'Experience & Skills',
+                body1: 'I am a Frontend-developer with experience in creating SPA applications on the React/TypeScript stack. ',
+                body2: 'I have a deep understanding of modern approaches to development, management, and performance optimization.',
+                body3: 'Thanks to my experience as a design engineer, I have developed strong analytical skills, systems thinking and the ability to work with complex requirements, which allows him to effectively solve non-trivial tasks and create reliable, scalable products.',
+                education: 'Education',
+                educationList: [
+                    'Belarusian National Technical University',
+                    'Frontend Development Courses ',
+                ],
+                skillsTitle: 'Key Skills',
+                skills: [
+                    'React',
+                    'TypeScript',
+                    'Redux Toolkit',
+                    'Vite',
+                    'Webpack',
+                    'Tailwind',
+                    'Zod',
+                    'Git',
+                    'Node.js',
+                    'RestAPI',
+                    'Testing',
+                    'Accessibility',
+                ],
+                infoTitle: 'Highlights',
+                experience: 'Experience',
+                experienceList: [
+                    'Frontend Engineer — 3+ years with React/TS',
+                    'Implemented effective application status management, which reduced the amount of boilerplate code by 30%',
+                    'Provided 70+% coverage of the code with unit and component tests',
+                    'Actively participated in the code review, task decomposition and maintenance of technical documentation',
+                ],
+                stack: 'Methodologies and practices',
+                stackList: [
+                    'Component approach',
+                    'FSD (Feature-Sliced Design)',
+                    'Code review',
+                    'CI/CD',
+                    'Adaptive layout',
+                    'Cross-browser compatibility',
+                ],
+            },
+            projects: {
+                title: 'Projects',
+                subtitle: 'Some highlights from my work',
+                demo: 'Live Demo',
+                code: 'Source Code',
+            },
+            contact: {
+                title: 'Contact',
+                subtitle: 'Let’s build something great together',
+                name: 'Your Name',
+                email: 'Email',
+                message: 'Message',
+                send: 'Send',
+                success: 'Thanks! Your message has been sent.',
+                error: 'Oops, something went wrong.',
+                orFindMe: 'Or find me here',
+            },
+            notfound: {
+                title: '404 — Page not found',
+                desc: 'The page you are looking for doesn’t exist or has been moved.',
+                backHome: 'Back to Home',
+            },
+            footer: { rights: 'All rights reserved.' },
+        },
+    },
+    ru: {
+        translation: {
+            nav: {
+                home: 'Главная',
+                about: 'О себе',
+                projects: 'Проекты',
+                contact: 'Контакты',
+            },
+            hero: {
+                greeting: 'Привет,',
+                title: 'я Андрей Гаврус',
+                desc: 'Frontend‑разработчик: создаю современные, доступные и быстрые веб‑приложения.',
+                ctaPrimary: 'Смотреть проекты',
+                ctaSecondary: 'Связаться',
+            },
+            home: {
+                photoAlt: 'Портретное фото',
+                introHighlight:
+                    'Создаю изящные интерфейсы на основе надежной инженерии.',
+                introBody:
+                    'Фокус на дизайн‑системах, удобстве разработки и плавных микроанимациях для запоминающихся продуктов.',
+                photoCaption: 'Город: Минск · Доступен к удаленной работе',
+            },
+            about: {
+                title: 'О себе',
+                subtitle: 'Опыт и навыки',
+                // bodyList: [
+                //   "Frontend-разработчик с опытом в создании SPA-приложений на стеке React/TypeScript.",
+                //   "Обладаю глубоким пониманием современных подходов к разработке, управления состоянием и оптимизации производительности. ",
+                //   "Благодаря опыту инженера-проектировщика развил сильные аналитические навыки, системное мышление и умение работать со сложными требованиями, что позволяет эффективно решать нетривиальные задачи и создавать надежные, масштабируемые продукты.",
+                // ],
+                body1: 'Frontend-разработчик с опытом в создании SPA-приложений на стеке React/TypeScript.',
+                body2: 'Обладаю глубоким пониманием современных подходов к разработке, управления состоянием и оптимизации производительности. ',
+                body3: 'Благодаря опыту инженера-проектировщика развил сильные аналитические навыки, системное мышление и умение работать со сложными требованиями, что позволяет эффективно решать нетривиальные задачи и создавать надежные, масштабируемые продукты.',
+                education: 'Образование',
+                educationList: [
+                    'Белорусский национальный технический университет',
+                    'Курсы по Frontend-разработке',
+                ],
+                skillsTitle: 'Ключевые навыки',
+                skills: [
+                    'React',
+                    'TypeScript',
+                    'Redux Toolkit',
+                    'Vite',
+                    'Webpack',
+                    'Tailwind',
+                    'Zod',
+                    'Git',
+                    'Node.js',
+                    'RestAPI',
+                    'Тестирование',
+                    'Доступность',
+                ],
+                infoTitle: 'Основные факты',
+                experience: 'Опыт',
+                experienceList: [
+                    'Frontend Engineer — 3+ года с React/TS',
+                    ' Реализовал эффективное управление состоянием приложения, что сократило количество boilerplate-кода на 30%',
+                    'Обеспечил покрытие кода unit- и компонентными тестами на 70+%',
+                    'Активно участвовал в код-ревью, декомпозиции задач и ведении технической документации',
+                ],
+                stack: 'Методологии и практики',
+                stackList: [
+                    'Компонентный подход',
+                    'FSD (Feature-Sliced Design)',
+                    'Код-ревью',
+                    'CI/CD',
+                    'Адаптивная верстка',
+                    'Кросс-браузерная совместимость',
+                ],
+            },
+            projects: {
+                title: 'Проекты',
+                subtitle: 'Некоторые из моих работ',
+                demo: 'Демо',
+                code: 'Код',
+            },
+            contact: {
+                title: 'Контакты',
+                subtitle: 'Давайте сделаем что‑то классное вместе',
+                name: 'Ваше имя',
+                email: 'Email',
+                message: 'Сообщение',
+                send: 'Отправить',
+                success: 'Спасибо! Ваше сообщение отправлено.',
+                error: 'Упс, что‑то пошло не так.',
+                orFindMe: 'Или найдите меня здесь',
+            },
+            notfound: {
+                title: '404 — Страница не найдена',
+                desc: 'Похоже, такой страницы не существует или её переместили.',
+                backHome: 'На главную',
+            },
+            footer: { rights: 'Все права защищены.' },
+        },
+    },
 };

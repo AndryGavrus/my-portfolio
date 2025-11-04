@@ -1,13 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { themeReducer } from './themeSlice';
 import { localeReducer } from './localeSlice';
-import { type TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import {
+    type TypedUseSelectorHook,
+    useDispatch,
+    useSelector,
+} from 'react-redux';
 
 export const store = configureStore({
-  reducer: {
-    theme: themeReducer,
-    locale: localeReducer,
-  },
+    reducer: {
+        theme: themeReducer,
+        locale: localeReducer,
+    },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

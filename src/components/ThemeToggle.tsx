@@ -3,17 +3,17 @@ import { useAppDispatch, useAppSelector } from '../store/store';
 import { toggleTheme } from '../store/themeSlice';
 
 export const ThemeToggle: React.FC = () => {
-  const dispatch = useAppDispatch();
-  const theme = useAppSelector((s) => s.theme.theme);
+    const dispatch = useAppDispatch();
+    const theme = useAppSelector(s => s.theme.theme);
 
-  return (
-    <button
-      className="btn btn--ghost"
-      aria-label="Toggle theme"
-      onClick={() => dispatch(toggleTheme())}
-      title={`Theme: ${theme}`}
-    >
-      {theme === 'dark' ? '🌙' : '🌞'}
-    </button>
-  );
+    return (
+        <button
+            className="btn btn--ghost"
+            aria-label="Toggle theme"
+            onClick={() => dispatch(toggleTheme())}
+            title={`Theme: ${theme}`}
+        >
+            {theme === 'dark' ? '🌙' : '🌞'}
+        </button>
+    );
 };
