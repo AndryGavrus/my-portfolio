@@ -19,12 +19,32 @@ export const Contact: React.FC = () => {
 
     const onSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setStatus('loading');
+
         try {
-            setStatus('loading');
-            await new Promise(r => setTimeout(r, 800));
-            setStatus('success');
-            setForm({ name: '', email: '', message: '' });
-        } catch {
+            const response = await fetch('https://formspree.io/f/xzzknzjn', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: form.name,
+                    email: form.email,
+                    message: form.message,
+                    _subject: 'New message from portfolio website',
+                    _replyto: form.email
+                }),
+            });
+
+            if (response.ok) {
+                setStatus('success');
+                setForm({ name: '', email: '', message: '' });
+            } else {
+                setStatus('error');
+                console.error('Formspree error:', await response.text());
+            }
+        } catch (error) {
+            console.error('Error submitting form:', error);
             setStatus('error');
         } finally {
             setTimeout(() => setStatus('idle'), 2500);
