@@ -9,7 +9,7 @@ import { Contact } from './pages/Contact';
 import { NotFound } from './pages/NotFound';
 
 export const App: React.FC = () => {
-    const theme = useAppSelector(s => s.theme.theme);
+    const theme = useAppSelector(s => s.app.theme);
 
     useEffect(() => {
         document.documentElement.setAttribute('data-theme', theme);

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Section } from '../components/Section';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import { slideInConfig } from '../config/animations';
 
 export const Contact: React.FC = () => {
     const { t, i18n } = useTranslation();
@@ -85,10 +86,9 @@ export const Contact: React.FC = () => {
         <Section title={t('contact.title')} subtitle={t('contact.subtitle')}>
             <div className="grid grid--2">
                 <motion.form
-                    className="card"
-                    style={{ padding: 18 }}
+                    className="card contact-form"
                     onSubmit={onSubmit}
-                    initial={{ opacity: 0, y: 12 }}
+                    {...slideInConfig}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.4 }}
@@ -97,7 +97,7 @@ export const Contact: React.FC = () => {
                         <div>
                             <label
                                 htmlFor="name"
-                                style={{ display: 'block', marginBottom: 6 }}
+                                className="contact-label"
                             >
                                 {t('contact.name')}
                             </label>
@@ -113,7 +113,7 @@ export const Contact: React.FC = () => {
                         <div>
                             <label
                                 htmlFor="email"
-                                style={{ display: 'block', marginBottom: 6 }}
+                                className="contact-label"
                             >
                                 {t('contact.email')}
                             </label>
@@ -129,11 +129,11 @@ export const Contact: React.FC = () => {
                         </div>
                     </div>
 
-                    <div className="form-row" style={{ marginTop: 14 }}>
+                    <div className="form-row contact-form-row">
                         <div>
                             <label
                                 htmlFor="message"
-                                style={{ display: 'block', marginBottom: 6 }}
+                                className="contact-label"
                             >
                                 {t('contact.message')}
                             </label>
@@ -148,24 +148,17 @@ export const Contact: React.FC = () => {
                         </div>
                     </div>
 
-                    <div
-                        style={{
-                            marginTop: 16,
-                            display: 'flex',
-                            gap: 10,
-                            alignItems: 'center',
-                        }}
-                    >
+                    <div className="contact-form-actions">
                         <button className="btn" disabled={status === 'loading'}>
                             {status === 'loading' ? '...' : t('contact.send')}
                         </button>
                         {status === 'success' && (
-                            <span style={{ color: 'seagreen' }}>
+                            <span className="contact-success">
                                 {t('contact.success')}
                             </span>
                         )}
                         {status === 'error' && (
-                            <span style={{ color: 'tomato' }}>
+                            <span className="contact-error">
                                 {t('contact.error')}
                             </span>
                         )}
@@ -173,49 +166,37 @@ export const Contact: React.FC = () => {
                 </motion.form>
 
                 <motion.aside
-                    className="card"
-                    initial={{ opacity: 0, y: 12 }}
+                    className="card contact-aside"
+                    {...slideInConfig}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.4, delay: 0.05 }}
-                    style={{ padding: 18, display: 'grid', gap: 14 }}
                 >
-                    <div style={{ display: 'grid', gap: 6 }}>
-                        <h3 style={{ margin: 0 }}>
+                    <div className="contact-info">
+                        <h3 className="contact-info-title">
                             {i18n.language === 'ru'
                                 ? 'Связаться со мной'
                                 : 'Get in touch'}
                         </h3>
-                        <p style={{ margin: 0, color: 'var(--text-muted)' }}>
+                        <p className="contact-info-text">
                             {i18n.language === 'ru'
                                 ? 'Предпочитаю email, но открыт для сообщений в соцсетях.'
                                 : 'Email is preferred, but I’m open to social DMs too.'}
                         </p>
                     </div>
 
-                    <div style={{ display: 'grid', gap: 10 }}>
+                    <div className="contact-items">
                         {items.map(item => {
                             const content = (
-                                <div
-                                    style={{
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        gap: 12,
-                                    }}
-                                >
-                                    <div style={{ fontSize: 20 }}>
+                                <div className="contact-item-content">
+                                    <div className="contact-item-icon">
                                         {item.icon}
                                     </div>
-                                    <div style={{ lineHeight: 1.2 }}>
-                                        <div
-                                            style={{
-                                                fontSize: 12,
-                                                color: 'var(--text-muted)',
-                                            }}
-                                        >
+                                    <div className="contact-item-text">
+                                        <div className="contact-item-label">
                                             {item.label}
                                         </div>
-                                        <div style={{ fontWeight: 600 }}>
+                                        <div className="contact-item-value">
                                             {item.value}
                                         </div>
                                     </div>

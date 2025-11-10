@@ -5,14 +5,14 @@ import { store } from '../store/store';
 
 i18n.use(initReactI18next).init({
     resources,
-    lng: store.getState().locale.locale,
+    lng: store.getState().app.locale,
     fallbackLng: 'en',
     interpolation: { escapeValue: false },
 });
 
 // sync with store changes
 store.subscribe(() => {
-    const lng = store.getState().locale.locale;
+    const lng = store.getState().app.locale;
     if (i18n.language !== lng) i18n.changeLanguage(lng);
 });
 

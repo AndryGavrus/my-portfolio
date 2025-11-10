@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { ThemeToggle } from './ThemeToggle';
-import { LanguageSwitcher } from './LanguageSwitcher';
+import { Controls } from './Controls';
 import { useTranslation } from 'react-i18next';
 import { AnimatePresence, motion } from 'framer-motion';
+import { fadeInConfig } from '../config/animations';
 
 export const Header: React.FC = () => {
     const { t } = useTranslation();
@@ -36,9 +36,8 @@ export const Header: React.FC = () => {
         <header className="header">
             <div className="container nav">
                 <div
-                    className="brand"
+                    className="brand header-brand"
                     onClick={() => go('/')}
-                    style={{ cursor: 'pointer' }}
                     aria-label="Logo"
                 >
                     <span className="brand__dot" />
@@ -63,8 +62,7 @@ export const Header: React.FC = () => {
                 </nav>
 
                 <div className="toolbar">
-                    <LanguageSwitcher />
-                    <ThemeToggle />
+                    <Controls/>
                 </div>
 
                 <button
@@ -80,9 +78,7 @@ export const Header: React.FC = () => {
             <AnimatePresence>
                 {open && (
                     <motion.aside
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
+                        {...fadeInConfig}
                     >
                         <div className="mobile-menu__inner">
                             <div className="mobile-menu__links">
@@ -113,12 +109,8 @@ export const Header: React.FC = () => {
                             </div>
 
                             <div className="mobile-menu__footer">
-                                <div
-                                    className="container"
-                                    style={{ display: 'flex', gap: 8 }}
-                                >
-                                    <LanguageSwitcher />
-                                    <ThemeToggle />
+                                <div className="container header-mobile-footer">
+                                    <Controls />
                                 </div>
                             </div>
                         </div>

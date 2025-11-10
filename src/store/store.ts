@@ -1,6 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { themeReducer } from './themeSlice';
-import { localeReducer } from './localeSlice';
+import { appReducer } from './appSlice';
 import {
     type TypedUseSelectorHook,
     useDispatch,
@@ -9,8 +8,7 @@ import {
 
 export const store = configureStore({
     reducer: {
-        theme: themeReducer,
-        locale: localeReducer,
+        app: appReducer,
     },
 });
 
