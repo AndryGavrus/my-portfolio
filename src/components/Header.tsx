@@ -19,18 +19,21 @@ export const Header: React.FC = () => {
     };
 
     useEffect(() => {
-        if (open) {
-            document.documentElement.style.overflow = 'hidden';
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.documentElement.style.overflow = '';
-            document.body.style.overflow = '';
-        }
+        const hasOverflow = open;
+        document.documentElement.style.overflow = hasOverflow ? 'hidden' : '';
+        document.body.style.overflow = hasOverflow ? 'hidden' : '';
         return () => {
             document.documentElement.style.overflow = '';
             document.body.style.overflow = '';
         };
     }, [open]);
+
+    const navItems = [
+        { path: '/', label: 'nav.home', end: true },
+        { path: '/about', label: 'nav.about', end: false },
+        { path: '/projects', label: 'nav.projects', end: false },
+        { path: '/contact', label: 'nav.contact', end: false },
+    ];
 
     return (
         <header className="header">
@@ -47,22 +50,20 @@ export const Header: React.FC = () => {
                 </div>
 
                 <nav className="nav__links" aria-label="Primary">
-                    <NavLink to="/" className={linkClass} end>
-                        {t('nav.home')}
-                    </NavLink>
-                    <NavLink to="/about" className={linkClass}>
-                        {t('nav.about')}
-                    </NavLink>
-                    <NavLink to="/projects" className={linkClass}>
-                        {t('nav.projects')}
-                    </NavLink>
-                    <NavLink to="/contact" className={linkClass}>
-                        {t('nav.contact')}
-                    </NavLink>
+                    {navItems.map(({ path, label, end }) => (
+                        <NavLink
+                            key={path}
+                            to={path}
+                            className={linkClass}
+                            end={end}
+                        >
+                            {t(label)}
+                        </NavLink>
+                    ))}
                 </nav>
 
                 <div className="toolbar">
-                    <Controls/>
+                    <Controls />
                 </div>
 
                 <button
@@ -77,35 +78,18 @@ export const Header: React.FC = () => {
 
             <AnimatePresence>
                 {open && (
-                    <motion.aside
-                        {...fadeInConfig}
-                    >
+                    <motion.aside {...fadeInConfig}>
                         <div className="mobile-menu__inner">
                             <div className="mobile-menu__links">
-                                <button
-                                    className="mobile-menu__link"
-                                    onClick={() => go('/')}
-                                >
-                                    {t('nav.home')}
-                                </button>
-                                <button
-                                    className="mobile-menu__link"
-                                    onClick={() => go('/about')}
-                                >
-                                    {t('nav.about')}
-                                </button>
-                                <button
-                                    className="mobile-menu__link"
-                                    onClick={() => go('/projects')}
-                                >
-                                    {t('nav.projects')}
-                                </button>
-                                <button
-                                    className="mobile-menu__link"
-                                    onClick={() => go('/contact')}
-                                >
-                                    {t('nav.contact')}
-                                </button>
+                                {navItems.map(({ path, label }) => (
+                                    <button
+                                        key={path}
+                                        className="mobile-menu__link"
+                                        onClick={() => go(path)}
+                                    >
+                                        {t(label)}
+                                    </button>
+                                ))}
                             </div>
 
                             <div className="mobile-menu__footer">
