@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useAppSelector } from './store/store';
 import { Layout } from './components/Layout';
@@ -8,7 +8,7 @@ import { Projects } from './pages/Projects';
 import { Contact } from './pages/Contact';
 import { NotFound } from './pages/NotFound';
 
-export const App: React.FC = () => {
+export const App = () => {
     const theme = useAppSelector(s => s.app.theme);
 
     useEffect(() => {

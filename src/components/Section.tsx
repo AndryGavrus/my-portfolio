@@ -1,10 +1,10 @@
 import React from 'react';
 
-interface Props {
+type Props = {
     title: string;
     subtitle?: string;
     id?: string;
-}
+};
 
 export const Section: React.FC<React.PropsWithChildren<Props>> = ({
     title,

@@ -2,7 +2,11 @@ import React from 'react';
 import { Header } from './Header';
 import { Footer } from './Footer';
 
-export const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
+type LayoutProps = {
+    children: React.ReactNode;
+};
+
+export const Layout = ({ children }: LayoutProps) => {
     return (
         <>
             <Header />

@@ -5,9 +5,9 @@ import { motion } from 'framer-motion';
 import { generatePlaceholderImage } from '../utils';
 import { slideInConfig } from '../config/animations';
 
-interface Props {
+type Props = {
     project: Project;
-}
+};
 
 export const ProjectCard: React.FC<Props> = ({ project }) => {
     const { t } = useTranslation();

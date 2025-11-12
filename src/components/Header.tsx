@@ -1,47 +1,42 @@
-import React, { useEffect, useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useCallback } from 'react';
+import { NavLink } from 'react-router-dom';
 import { Controls } from './Controls';
 import { useTranslation } from 'react-i18next';
 import { AnimatePresence, motion } from 'framer-motion';
 import { fadeInConfig } from '../config/animations';
+import { useMobileMenu } from '../hooks/useMobileMenu';
+import { useNavigation } from '../hooks/useNavigation';
+import { useNavItems } from '../hooks/useNavItems';
 
-export const Header: React.FC = () => {
+export const Header = () => {
     const { t } = useTranslation();
-    const [open, setOpen] = useState(false);
-    const navigate = useNavigate();
+    const { open, toggleMenu, closeMenu } = useMobileMenu();
+    const { go } = useNavigation();
+    const navItems = useNavItems();
 
-    const linkClass = ({ isActive }: { isActive: boolean }) =>
-        `nav__link ${isActive ? 'active' : ''}`;
+    const handleNav = useCallback((path: string) => {
+        go(path);
+        closeMenu();
+    }, [go, closeMenu]);
 
-    const go = (path: string) => {
-        navigate(path);
-        setOpen(false);
-    };
+    const linkClass = useCallback(({ isActive }: { isActive: boolean }) =>
+        `nav__link ${isActive ? 'active' : ''}`, []);
 
-    useEffect(() => {
-        const hasOverflow = open;
-        document.documentElement.style.overflow = hasOverflow ? 'hidden' : '';
-        document.body.style.overflow = hasOverflow ? 'hidden' : '';
-        return () => {
-            document.documentElement.style.overflow = '';
-            document.body.style.overflow = '';
-        };
-    }, [open]);
-
-    const navItems = [
-        { path: '/', label: 'nav.home', end: true },
-        { path: '/about', label: 'nav.about', end: false },
-        { path: '/projects', label: 'nav.projects', end: false },
-        { path: '/contact', label: 'nav.contact', end: false },
-    ];
+    // Handle backdrop click to close menu
+    const handleBackdropClick = useCallback(() => {
+        closeMenu();
+    }, [closeMenu]);
 
     return (
         <header className="header">
             <div className="container nav">
                 <div
                     className="brand header-brand"
-                    onClick={() => go('/')}
-                    aria-label="Logo"
+                    onClick={() => handleNav('/')}
+                    aria-label={t('nav.home')}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => e.key === 'Enter' && handleNav('/')}
                 >
                     <span className="brand__dot" />
                     <NavLink to="/" end>
@@ -49,7 +44,7 @@ export const Header: React.FC = () => {
                     </NavLink>
                 </div>
 
-                <nav className="nav__links" aria-label="Primary">
+                <nav className="nav__links" aria-label={t('nav.primary')}>
                     {navItems.map(({ path, label, end }) => (
                         <NavLink
                             key={path}
@@ -68,24 +63,30 @@ export const Header: React.FC = () => {
 
                 <button
                     className={`burger ${open ? 'burger--open' : ''}`}
-                    aria-label={open ? 'Close menu' : 'Open menu'}
+                    aria-label={open ? t('nav.closeMenu') : t('nav.openMenu')}
                     aria-expanded={open}
-                    onClick={() => setOpen(v => !v)}
+                    onClick={toggleMenu}
+                    aria-controls="mobile-menu"
                 >
-                    <span className="burger__icon" />
+                    <span className="burger__icon" aria-hidden="true" />
                 </button>
             </div>
 
             <AnimatePresence>
                 {open && (
-                    <motion.aside {...fadeInConfig}>
-                        <div className="mobile-menu__inner">
+                    <motion.aside
+                        {...fadeInConfig}
+                        id="mobile-menu"
+                        onClick={handleBackdropClick} // Close menu when clicking backdrop
+                    >
+                        <div className="mobile-menu__inner" onClick={(e) => e.stopPropagation()}>
                             <div className="mobile-menu__links">
                                 {navItems.map(({ path, label }) => (
                                     <button
                                         key={path}
                                         className="mobile-menu__link"
-                                        onClick={() => go(path)}
+                                        onClick={() => handleNav(path)}
+                                        aria-label={t(label)}
                                     >
                                         {t(label)}
                                     </button>

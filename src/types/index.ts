@@ -1,4 +1,4 @@
-export interface Project {
+export type Project = {
     id: string;
     title: string;
     description: string;
@@ -6,4 +6,4 @@ export interface Project {
     codeUrl?: string;
     imageDataUrl?: string;
     tech?: string[];
-}
+};

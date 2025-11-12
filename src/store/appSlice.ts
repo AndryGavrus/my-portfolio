@@ -3,10 +3,10 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 type Theme = 'dark' | 'light';
 type Locale = 'ru' | 'en';
 
-interface AppState {
+type AppState = {
     theme: Theme;
     locale: Locale;
-}
+};
 
 const initialState: AppState = {
     theme:

@@ -189,7 +189,7 @@ button {
         display: none;
     }
 
-    .toolbar {
+    .nav .toolbar {
         display: none;
     }
 }
