@@ -1,84 +1,42 @@
-import React from 'react';
 import { Section } from '../components/Section';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
-import { slideInConfig } from '../config/animations';
+import { AboutCard, AboutSection, ListSection, AboutSubCard } from '../components/AboutCard';
 
-export const About: React.FC = () => {
+type TranslationArray = string[];
+
+export const About = () => {
     const { t } = useTranslation();
-    const education = t<string[], any>('about.educationList', {
-        returnObjects: true,
-    });
-    const skills = t<string[], any>('about.skills', { returnObjects: true });
-    const experience = t<string[], any>('about.experienceList', {
-        returnObjects: true,
-    });
-    const stack = t<string[], any>('about.stackList', { returnObjects: true });
+    
+    const education = t('about.educationList', { returnObjects: true }) as TranslationArray;
+    const skills = t('about.skills', { returnObjects: true }) as TranslationArray;
+    const experience = t('about.experienceList', { returnObjects: true }) as TranslationArray;
+    const stack = t('about.stackList', { returnObjects: true }) as TranslationArray;
 
     return (
         <Section title={t('about.title')} subtitle={t('about.subtitle')}>
             <div className="grid grid--2">
-                <motion.div
-                    className="card about-card"
-                    {...slideInConfig}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.4 }}
-                >
+                <AboutCard delay={0}>
                     <p className="about-section">{t('about.body1')}</p>
                     <p className="about-section">{t('about.body2')}</p>
                     <p className="about-section">{t('about.body3')}</p>
                     <hr className="sep" />
-                    <h3 className="about-section">{t('about.skillsTitle')}</h3>
-                    <div className="badges">
-                        {skills.map(s => (
-                            <span className="badge" key={s}>
-                                {s}
-                            </span>
-                        ))}
-                    </div>
+                    <AboutSection title="about.skillsTitle">
+                        <ListSection items={skills} type="badges" itemKeyPrefix="skill" />
+                    </AboutSection>
                     <hr className="sep" />
-                    <h3 className="about-section">{t('about.education')}</h3>
-                    <ul className="about-list">
-                        {education.map(item => (
-                            <li key={item} className="about-list-item">
-                                {item}
-                            </li>
-                        ))}
-                    </ul>
-                </motion.div>
+                    <AboutSection title="about.education">
+                        <ListSection items={education} type="list" itemKeyPrefix="education" />
+                    </AboutSection>
+                </AboutCard>
 
-                <motion.div
-                    className="card about-card"
-                    {...slideInConfig}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.4, delay: 0.05 }}
-                >
-                    <h3 className="about-section">{t('about.infoTitle')}</h3>
-                    <div className="grid about-grid">
-                        <div className="card about-sub-card">
-                            <strong>{t('about.experience')}</strong>
-                            <ul className="about-list">
-                                {experience.map(item => (
-                                    <li key={item} className="about-list-item">
-                                        {item}
-                                    </li>
-                                ))}
-                            </ul>
+                <AboutCard delay={0}>
+                    <AboutSection title="about.infoTitle">
+                        <div className="grid about-grid">
+                            <AboutSubCard title="about.experience" items={experience} itemKeyPrefix="experience" />
+                            <AboutSubCard title="about.stack" items={stack} itemKeyPrefix="stack" />
                         </div>
-                        <div className="card about-sub-card">
-                            <strong>{t('about.stack')}</strong>
-                            <ul className="about-list">
-                                {stack.map(item => (
-                                    <li key={item} className="about-list-item">
-                                        {item}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-                </motion.div>
+                    </AboutSection>
+                </AboutCard>
             </div>
         </Section>
     );

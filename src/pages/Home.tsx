@@ -1,11 +1,10 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import heroPhoto from '../assets/ava.jpg';
 import { slideInConfig, slideInFromRightConfig } from '../config/animations';
 
-export const Home: React.FC = () => {
+export const Home = () => {
     const { t } = useTranslation();
 
     return (

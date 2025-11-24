@@ -25,7 +25,7 @@ export const staggerContainer = {
     transition: {
       staggerChildren: 0.1
     }
- }
+  }
 };
 
 export const staggerItem = {
@@ -35,3 +35,10 @@ export const staggerItem = {
     duration: 0.3
   }
 };
+
+export const aboutCardConfig = (delay: number = 0) => ({
+  ...slideInConfig,
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.3 },
+  transition: { duration: 0.4, delay }
+});
