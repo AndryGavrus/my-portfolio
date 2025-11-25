@@ -1,4 +1,3 @@
-import React from 'react';
 import type { Project } from '../types';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
@@ -9,16 +8,13 @@ type Props = {
     project: Project;
 };
 
-export const ProjectCard: React.FC<Props> = ({ project }) => {
+export const ProjectCard = ({ project }: Props) => {
     const { t } = useTranslation();
 
     return (
         <motion.article
             className="card project"
             {...slideInConfig}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.4 }}
         >
             <img
                 className="project__thumb"
@@ -50,6 +46,9 @@ export const ProjectCard: React.FC<Props> = ({ project }) => {
                         >
                             {t('projects.code')}
                         </a>
+                    )}
+                    {!project.demoUrl && !project.codeUrl && (
+                        <p className="project__description">{t('projects.note')}</p>
                     )}
                 </div>
             </div>

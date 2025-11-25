@@ -6,7 +6,8 @@ type TranslationArray = string[];
 
 export const About = () => {
     const { t } = useTranslation();
-    
+
+    const body = t('about.bodyList', { returnObjects: true }) as TranslationArray;
     const education = t('about.educationList', { returnObjects: true }) as TranslationArray;
     const skills = t('about.skills', { returnObjects: true }) as TranslationArray;
     const experience = t('about.experienceList', { returnObjects: true }) as TranslationArray;
@@ -15,10 +16,10 @@ export const About = () => {
     return (
         <Section title={t('about.title')} subtitle={t('about.subtitle')}>
             <div className="grid grid--2">
-                <AboutCard delay={0}>
-                    <p className="about-section">{t('about.body1')}</p>
-                    <p className="about-section">{t('about.body2')}</p>
-                    <p className="about-section">{t('about.body3')}</p>
+                <AboutCard>
+                    {body.map((item, index) => (
+                        <p key={index}>{item}</p>
+                    ))}
                     <hr className="sep" />
                     <AboutSection title="about.skillsTitle">
                         <ListSection items={skills} type="badges" itemKeyPrefix="skill" />
@@ -29,7 +30,7 @@ export const About = () => {
                     </AboutSection>
                 </AboutCard>
 
-                <AboutCard delay={0}>
+                <AboutCard>
                     <AboutSection title="about.infoTitle">
                         <div className="grid about-grid">
                             <AboutSubCard title="about.experience" items={experience} itemKeyPrefix="experience" />

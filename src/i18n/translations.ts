@@ -24,9 +24,11 @@ export const resources = {
             about: {
                 title: 'About Me',
                 subtitle: 'Experience & Skills',
-                body1: 'I am a Frontend-developer with experience in creating SPA applications on the React/TypeScript stack. ',
-                body2: 'I have a deep understanding of modern approaches to development, management, and performance optimization.',
-                body3: 'Thanks to my experience as a design engineer, I have developed strong analytical skills, systems thinking and the ability to work with complex requirements, which allows him to effectively solve non-trivial tasks and create reliable, scalable products.',
+                bodyList: [
+                    'I am a Frontend-developer with experience in creating SPA applications on the React/TypeScript stack.',
+                    'I have a deep understanding of modern approaches to development, management, and performance optimization.',
+                    'Thanks to my experience as a design engineer, I have developed strong analytical skills, systems thinking and the ability to work with complex requirements, which allows him to effectively solve non-trivial tasks and create reliable, scalable products.',
+                ],
                 education: 'Education',
                 educationList: [
                     'Belarusian National Technical University',
@@ -70,6 +72,7 @@ export const resources = {
                 subtitle: 'Some highlights from my work',
                 demo: 'Live Demo',
                 code: 'Source Code',
+                note: 'Under developing',
             },
             contact: {
                 title: 'Contact',
@@ -116,14 +119,11 @@ export const resources = {
             about: {
                 title: 'О себе',
                 subtitle: 'Опыт и навыки',
-                // bodyList: [
-                //   "Frontend-разработчик с опытом в создании SPA-приложений на стеке React/TypeScript.",
-                //   "Обладаю глубоким пониманием современных подходов к разработке, управления состоянием и оптимизации производительности. ",
-                //   "Благодаря опыту инженера-проектировщика развил сильные аналитические навыки, системное мышление и умение работать со сложными требованиями, что позволяет эффективно решать нетривиальные задачи и создавать надежные, масштабируемые продукты.",
-                // ],
-                body1: 'Frontend-разработчик с опытом в создании SPA-приложений на стеке React/TypeScript.',
-                body2: 'Обладаю глубоким пониманием современных подходов к разработке, управления состоянием и оптимизации производительности. ',
-                body3: 'Благодаря опыту инженера-проектировщика развил сильные аналитические навыки, системное мышление и умение работать со сложными требованиями, что позволяет эффективно решать нетривиальные задачи и создавать надежные, масштабируемые продукты.',
+                bodyList: [
+                    "Frontend-разработчик с опытом в создании SPA-приложений на стеке React/TypeScript.",
+                    "Обладаю глубоким пониманием современных подходов к разработке, управления состоянием и оптимизации производительности. ",
+                    "Благодаря опыту инженера-проектировщика развил сильные аналитические навыки, системное мышление и умение работать со сложными требованиями, что позволяет эффективно решать нетривиальные задачи и создавать надежные, масштабируемые продукты.",
+                ],
                 education: 'Образование',
                 educationList: [
                     'Белорусский национальный технический университет',
@@ -167,6 +167,7 @@ export const resources = {
                 subtitle: 'Некоторые из моих работ',
                 demo: 'Демо',
                 code: 'Код',
+                note: 'В разработке',
             },
             contact: {
                 title: 'Контакты',

@@ -1,17 +1,16 @@
 import { motion } from 'framer-motion';
-import { aboutCardConfig } from '../config/animations';
 import { useTranslation } from 'react-i18next';
+import { slideInConfig } from '../config/animations';
 
 type AboutCardProps = {
     children: React.ReactNode;
-    delay?: number;
 };
 
-export const AboutCard = ({ children, delay = 0 }: AboutCardProps) => {
+export const AboutCard = ({ children}: AboutCardProps) => {
     return (
         <motion.div
             className="card about-card"
-            {...aboutCardConfig(delay)}
+            {...slideInConfig}
         >
             {children}
         </motion.div>

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Section } from '../components/Section';
 import { useTranslation } from 'react-i18next';
 import { ProjectCard } from '../components/ProjectCard';
@@ -9,8 +8,8 @@ const demoProjects: Project[] = [
         id: 'p1',
         title: 'Dashboard UI',
         description: 'Modern analytics dashboard.',
-        demoUrl: 'https://example.com/demo-dashboard',
-        codeUrl: 'https://github.com/you/dashboard',
+        // demoUrl: 'https://example.com/demo-dashboard',
+        // codeUrl: 'https://github.com/you/dashboard',
     },
     {
         id: 'p2',
@@ -49,7 +48,7 @@ const demoProjects: Project[] = [
     },
 ];
 
-export const Projects: React.FC = () => {
+export const Projects = () => {
     const { t } = useTranslation();
 
     return (
