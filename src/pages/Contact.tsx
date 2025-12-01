@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Section } from '../components/Section';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { slideInConfig } from '../config/animations';
 
-export const Contact: React.FC = () => {
+export const Contact = () => {
     const { t, i18n } = useTranslation();
 
     const [status, setStatus] = useState<
@@ -12,31 +12,18 @@ export const Contact: React.FC = () => {
     >('idle');
     const [form, setForm] = useState({ name: '', email: '', message: '' });
 
-    const onChange = (
-        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-    ) => {
+    const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
         setForm(f => ({ ...f, [e.target.name]: e.target.value }));
-    };
 
     const onSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setStatus('loading');
-
         try {
             const response = await fetch('https://formspree.io/f/xzzknzjn', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    name: form.name,
-                    email: form.email,
-                    message: form.message,
-                    _subject: 'New message from portfolio website',
-                    _replyto: form.email
-                }),
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ ...form, _subject: 'New message from portfolio website', _replyto: form.email }),
             });
-
             if (response.ok) {
                 setStatus('success');
                 setForm({ name: '', email: '', message: '' });
@@ -54,26 +41,26 @@ export const Contact: React.FC = () => {
 
     const items = [
         {
-            label: i18n.language === 'ru' ? 'Email' : 'Email',
+            label: t('contact.email_label'),
             value: 'andry.gavrus@gmail.com',
             href: 'mailto:andry.gavrus@gmail.com',
             icon: '✉️',
         },
         {
-            label: i18n.language === 'ru' ? 'GitHub' : 'GitHub',
+            label: t('contact.github_label'),
             value: '@AndryGavrus',
             href: 'https://github.com/AndryGavrus',
             icon: '🐙',
         },
         {
-            label: i18n.language === 'ru' ? 'LinkedIn' : 'LinkedIn',
+            label: t('contact.linkedin_label'),
             value: 'my-name',
             href: 'https://linkedin.com/',
             icon: '💼',
         },
         {
-            label: i18n.language === 'ru' ? 'Резюме' : 'Resume',
-            value: i18n.language === 'ru' ? 'Скачать PDF' : 'Download PDF',
+            label: t('contact.resume_label'),
+            value: t('contact.resume_download'),
             href:
                 i18n.language === 'ru'
                     ? '/resume/andrey-gavrus-it-ru.pdf'
@@ -152,16 +139,8 @@ export const Contact: React.FC = () => {
                         <button className="btn" disabled={status === 'loading'}>
                             {status === 'loading' ? '...' : t('contact.send')}
                         </button>
-                        {status === 'success' && (
-                            <span className="contact-success">
-                                {t('contact.success')}
-                            </span>
-                        )}
-                        {status === 'error' && (
-                            <span className="contact-error">
-                                {t('contact.error')}
-                            </span>
-                        )}
+                        {status === 'success' && <span className="contact-success">{t('contact.success')}</span>}
+                        {status === 'error' && <span className="contact-error">{t('contact.error')}</span>}
                     </div>
                 </motion.form>
 
@@ -174,84 +153,58 @@ export const Contact: React.FC = () => {
                 >
                     <div className="contact-info">
                         <h3 className="contact-info-title">
-                            {i18n.language === 'ru'
-                                ? 'Связаться со мной'
-                                : 'Get in touch'}
+                            {t('contact.info_title')}
                         </h3>
                         <p className="contact-info-text">
-                            {i18n.language === 'ru'
-                                ? 'Предпочитаю email, но открыт для сообщений в соцсетях.'
-                                : 'Email is preferred, but I’m open to social DMs too.'}
+                            {t('contact.info_text')}
                         </p>
                     </div>
 
                     <div className="contact-items">
-                        {items.map(item => {
-                            const content = (
-                                <div className="contact-item-content">
-                                    <div className="contact-item-icon">
-                                        {item.icon}
-                                    </div>
-                                    <div className="contact-item-text">
-                                        <div className="contact-item-label">
-                                            {item.label}
-                                        </div>
-                                        <div className="contact-item-value">
-                                            {item.value}
-                                        </div>
-                                    </div>
-                                </div>
-                            );
-                            return item.href ? (
+                        {items.map(item =>
+                            item.href ? (
                                 <a
                                     key={item.label}
                                     href={item.href}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="contact-item"
-                                    style={{
-                                        border: '1px solid var(--border)',
-                                        borderRadius: 12,
-                                        padding: 12,
-                                        background: 'var(--bg-soft)',
-                                        transition:
-                                            'transform 0.12s ease, background 0.2s ease, border-color 0.2s ease',
-                                        display: 'block',
-                                    }}
-                                    onMouseEnter={e => {
-                                        (
-                                            e.currentTarget as HTMLAnchorElement
-                                        ).style.transform = 'translateY(-2px)';
-                                        (
-                                            e.currentTarget as HTMLAnchorElement
-                                        ).style.background =
-                                            'color-mix(in oklab, var(--bg-soft), var(--primary) 6%)';
-                                    }}
-                                    onMouseLeave={e => {
-                                        (
-                                            e.currentTarget as HTMLAnchorElement
-                                        ).style.transform = '';
-                                        (
-                                            e.currentTarget as HTMLAnchorElement
-                                        ).style.background = 'var(--bg-soft)';
-                                    }}
+                                    className="contact-item contact-item-link"
                                 >
-                                    {content}
+                                    <div className="contact-item-content">
+                                        <div className="contact-item-icon">
+                                            {item.icon}
+                                        </div>
+                                        <div className="contact-item-text">
+                                            <div className="contact-item-label">
+                                                {item.label}
+                                            </div>
+                                            <div className="contact-item-value">
+                                                {item.value}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </a>
                             ) : (
                                 <div
                                     key={item.label}
-                                    style={{
-                                        border: '1px solid var(--border)',
-                                        borderRadius: 12,
-                                        padding: 12,
-                                        background: 'var(--bg-soft)',
-                                    }}
+                                    className="contact-item contact-item-static"
                                 >
-                                    {content}
+                                    <div className="contact-item-content">
+                                        <div className="contact-item-icon">
+                                            {item.icon}
+                                        </div>
+                                        <div className="contact-item-text">
+                                            <div className="contact-item-label">
+                                                {item.label}
+                                            </div>
+                                            <div className="contact-item-value">
+                                                {item.value}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            );
-                        })}
+                            )
+                        )}
                     </div>
                 </motion.aside>
             </div>

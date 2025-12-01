@@ -84,6 +84,13 @@ export const resources = {
                 success: 'Thanks! Your message has been sent.',
                 error: 'Oops, something went wrong.',
                 orFindMe: 'Or find me here',
+                email_label: 'Email',
+                github_label: 'GitHub',
+                linkedin_label: 'LinkedIn',
+                resume_label: 'Resume',
+                resume_download: 'Download PDF',
+                info_title: 'Get in touch',
+                info_text: 'Email is preferred, but I’m open to social DMs too.',
             },
             notfound: {
                 title: '404 — Page not found',
@@ -179,6 +186,14 @@ export const resources = {
                 success: 'Спасибо! Ваше сообщение отправлено.',
                 error: 'Упс, что‑то пошло не так.',
                 orFindMe: 'Или найдите меня здесь',
+                email_label: 'Email',
+                github_label: 'GitHub',
+                linkedin_label: 'LinkedIn',
+                resume_label: 'Резюме',
+                resume_download: 'Скачать PDF',
+                info_title: 'Связаться со мной',
+                info_text: 'Предпочитаю email, но открыт для сообщений в соцсетях.',
+
             },
             notfound: {
                 title: '404 — Страница не найдена',

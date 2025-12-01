@@ -1,8 +1,7 @@
-import React from 'react';
 import { useAppDispatch, useAppSelector } from '../store/store';
 import { toggleTheme, toggleLocale } from '../store/appSlice';
 
-export const Controls: React.FC = () => {
+export const Controls = () => {
     const dispatch = useAppDispatch();
     const theme = useAppSelector(s => s.app.theme);
     const locale = useAppSelector(s => s.app.locale);

@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { generatePlaceholderImage } from '../utils';
 import { slideInConfig } from '../config/animations';
+import { LinkAsButtton } from './LinkAsButtton';
 
 type Props = {
     project: Project;
@@ -28,24 +29,20 @@ export const ProjectCard = ({ project }: Props) => {
             <div className="project__hover">
                 <div className="project-hover-content">
                     {project.demoUrl && (
-                        <a
-                            className="btn"
-                            href={project.demoUrl}
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            {t('projects.demo')}
-                        </a>
+                        <LinkAsButtton
+                            className='btn'
+                            link={project.demoUrl}
+                            desc="projects.demo"
+                        />
+
                     )}
                     {project.codeUrl && (
-                        <a
-                            className="btn btn--ghost"
-                            href={project.codeUrl}
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            {t('projects.code')}
-                        </a>
+                        <LinkAsButtton
+                            className='btn btn--ghost'
+                            link={project.codeUrl}
+                            desc="projects.code"
+                        />
+
                     )}
                     {!project.demoUrl && !project.codeUrl && (
                         <p className="project__description">{t('projects.note')}</p>
